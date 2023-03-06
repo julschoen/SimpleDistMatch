@@ -215,7 +215,7 @@ class Trainer():
                     ## AE
                     encX = self.ae.encoder(d_c.to(self.p.device), labels).detach()
                     encY = self.ae.encoder(torch.tanh(ims), labels[:ims.shape[0]])
-                    
+
                 mmd = torch.norm(encX.mean(dim=0)-encY.mean(dim=0))
 
                 ## Correlation:
@@ -242,8 +242,7 @@ class Trainer():
 
         self.save()
         self.ims.requires_grad = False
-
-    
+  
     def train(self):
         for p in self.ae.parameters():
             p.requires_grad = False
