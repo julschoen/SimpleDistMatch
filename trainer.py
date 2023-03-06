@@ -17,8 +17,8 @@ class Trainer():
         self.gen = self.inf_train_gen()
 
         ### VAE
-        self.ae = AE(latent_size=self.p.z_dim).to(self.p.device)
-        self.opt_ae = torch.optim.Adam(self.ae.parameters(), lr=self.p.lrAE, weight_decay=1e-5)
+        self.ae = AE(self.p).to(self.p.device)
+        self.opt_ae = torch.optim.Adam(self.ae.parameters(), lr=self.p.lrAE)
 
         self.ims = torch.randn(10*self.p.num_ims,3,32,32).to(self.p.device)
 
