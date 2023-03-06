@@ -59,10 +59,7 @@ class Trainer():
         path = os.path.join(self.p.log_dir, 'images/synth')
         if not os.path.isdir(path):
             os.mkdir(path)
-        if self.p.up:
-            ims = self.up(self.ims)
-        else:
-            ims = torch.tanh(self.ims)
+        ims = torch.tanh(self.ims)
         torchvision.utils.save_image(
             vutils.make_grid(ims, nrow=self.p.num_ims, padding=2, normalize=True)
             , os.path.join(path, f'{step}.png'))
@@ -88,10 +85,7 @@ class Trainer():
         if not os.path.isdir(path):
             os.mkdir(path)
         file_name = os.path.join(path, 'data.pt')
-        if self.p.up:
-            ims = self.up(self.ims)
-        else:
-            ims = torch.tanh(self.ims)
+        ims = torch.tanh(self.ims)
         torch.save(ims.cpu(), file_name)
 
         file_name = os.path.join(path, 'labels.pt')
