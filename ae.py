@@ -59,7 +59,7 @@ class Decoder(nn.Module):
         self.conv4 = nn.ConvTranspose2d(nfilter, 3, 4, 2, 1, bias=False)
 
     # forward method
-    def forward(self, input, label):
+    def forward(self, input):
         x = self.norm1(self.conv1(input))
         x = F.leaky_relu(x, 0.2)
 
