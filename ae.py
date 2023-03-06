@@ -5,7 +5,7 @@ import torch.nn.functional as F
 
 class Encoder(nn.Module):
     # initializers
-    def __init__(self, z_dim, nfilter=128):
+    def __init__(self, params, z_dim, nfilter=128):
         super(Encoder, self).__init__()
 
         self.conv1_1 = nn.Conv2d(3, nfilter//2, 4, 2, 1, False)
@@ -74,7 +74,7 @@ class Decoder(nn.Module):
 class AE(nn.Module):
     def __init__(self, params):
         super(AE, self).__init__()
-        self.encoder = Encoder(z_dim=params.z_dim, nfilter=params.filter)
+        self.encoder = Encoder(params, z_dim=params.z_dim, nfilter=params.filter)
         self.decoder = Decoder(z_dim=params.z_dim, nfilter=params.filter)
 
     def forward(self, x, y):
