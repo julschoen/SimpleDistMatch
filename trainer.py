@@ -208,7 +208,6 @@ class Trainer():
                 data, labels = next(self.gen)
 
                 d_c = data[labels == c]
-                d_c = d_c[torch.randperm(d_c.shape[0])[:self.p.num_ims]]
 
                 labels = torch.ones(d_c.shape[0], dtype=torch.long)*c
                 ims = self.ims[c*self.p.num_ims:(c+1)*self.p.num_ims]
