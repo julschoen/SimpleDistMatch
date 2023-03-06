@@ -213,8 +213,7 @@ class Trainer():
                 ims = self.ims[c*self.p.num_ims:(c+1)*self.p.num_ims]
 
                 ## AE
-                encX = self.ae.encoder(d_c.to(self.p.device), labels)
-                encX = encX.detach()
+                encX = self.ae.encoder(d_c.to(self.p.device), labels).detach()
                 encY = self.ae.encoder(torch.tanh(ims), labels[:ims.shape[0]])
                 mmd = torch.norm(encX.mean(dim=0)-encY.mean(dim=0))
 
