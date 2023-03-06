@@ -116,7 +116,7 @@ class Trainer():
 
     def train_ae(self):
         print('############## Training AE ##############',flush=True)
-        if self.p.load_ae and self.load_vae():
+        if self.p.load_ae and self.load_ae():
             print('Loaded existing checkpoint not training again',flush=True)
         else:
             for p in self.ae.parameters():
