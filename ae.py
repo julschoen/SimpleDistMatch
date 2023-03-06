@@ -17,7 +17,7 @@ class Encoder(nn.Module):
         self.norm2 = nn.GroupNorm(nfilter*2, nfilter*2, affine=True)
 
         self.conv3 = nn.Conv2d(nfilter*2, nfilter*4, 4, 2, 1, bias=False)
-        self.norm2 = nn.GroupNorm(nfilter*4, nfilter*4, affine=True)
+        self.norm3 = nn.GroupNorm(nfilter*4, nfilter*4, affine=True)
 
         self.conv4 = nn.Conv2d(nfilter * 4, z_dim, 4, 1, 0, bias=False)
 
@@ -54,7 +54,7 @@ class Decoder(nn.Module):
         self.norm2 = nn.GroupNorm(nfilter*2, nfilter*2, affine=True)
 
         self.conv3 = nn.ConvTranspose2d(nfilter*2, nfilter, 4, 2, 1, bias=False)
-        self.norm2 = nn.GroupNorm(nfilter, nfilter, affine=True)
+        self.norm3 = nn.GroupNorm(nfilter, nfilter, affine=True)
 
         self.conv4 = nn.ConvTranspose2d(nfilter, 3, 4, 2, 1, bias=False)
 
