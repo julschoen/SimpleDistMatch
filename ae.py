@@ -26,6 +26,7 @@ class Encoder(nn.Module):
             self.fill[i, i, :, :] = 1
 
     def forward(self, input, label):
+        print(input.shape)
         label = self.fill[label]
 
         x = self.norm1(self.conv1_1(input))
