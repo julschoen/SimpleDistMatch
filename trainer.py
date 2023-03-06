@@ -211,10 +211,11 @@ class Trainer():
 
                 labels = torch.ones(d_c.shape[0], dtype=torch.long)*c
                 ims = self.ims[c*self.p.num_ims:(c+1)*self.p.num_ims]
-
-                ## AE
-                encX = self.ae.encoder(d_c.to(self.p.device), labels).detach()
-                encY = self.ae.encoder(torch.tanh(ims), labels[:ims.shape[0]])
+                with torch.autocast(device_type=self.p.device, dtype=torch.float16):
+                    ## AE
+                    encX = self.ae.encoder(d_c.to(self.p.device), labels).detach()
+                    encY = self.ae.encoder(torch.tanh(ims), labels[:ims.shape[0]])
+                    
                 mmd = torch.norm(encX.mean(dim=0)-encY.mean(dim=0))
 
                 ## Correlation:
