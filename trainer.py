@@ -117,7 +117,7 @@ class Trainer():
             self.ae.load_state_dict(torch.load(path))
         return os.path.exists(path)
 
-    def loss_ae(self, x, pred):
+    def loss(self, x, pred):
         return F.mse_loss(pred, x,reduction='sum')/x.shape[0]
 
     def train_ae(self):
