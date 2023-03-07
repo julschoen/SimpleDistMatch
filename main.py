@@ -13,7 +13,7 @@ def main():
     parser.add_argument('--batch_size', type=int, default= 512, help='input batch size for training (default: 512)')
     parser.add_argument('--device', type=str, default='cuda')
     parser.add_argument('--log_dir', type=str, default='./log')
-    parser.add_argument('--load_ae', type=bool, default=False)
+    parser.add_argument('--load__ae', type=bool, default=False)
     parser.add_argument('--load_ims', type=bool, default=False)
     parser.add_argument('--pca', type=bool, default=True)
 
